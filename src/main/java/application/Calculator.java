@@ -60,5 +60,10 @@ public class Calculator {
 		return r * val;
 	}
 
+	public double pFromUandR(double u, double r){
+		double val = u * u;
+		return val / r;
+	}
+
 	
 }
