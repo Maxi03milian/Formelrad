@@ -100,4 +100,8 @@ public class Calculator {
 		double val = i * i;
 		return p / val;
 	}
+	public  double rFromPandU(double p,double u){
+		double val = u * u;
+		return val / p;
+	}
 }
