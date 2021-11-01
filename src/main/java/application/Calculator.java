@@ -91,4 +91,9 @@ public class Calculator {
 		double val = p * r;
 		return  Math.sqrt(val);
 	}
+
+	//Formulas with R
+	public  double rFromUandI(double u,double i){
+		return u / i;
+	}
 }
