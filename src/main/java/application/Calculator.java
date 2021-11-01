@@ -65,5 +65,10 @@ public class Calculator {
 		return val / r;
 	}
 
+	//Formulas with I
+	public double iFromPandU(double p, double u){
+		return p / u;
+	}
+
 	
 }
