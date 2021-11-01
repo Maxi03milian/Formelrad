@@ -50,9 +50,15 @@ public class Calculator {
 	}
 
 	//Methods for calculations
+
 	public double pFromUandI(double u, double i){
 		return u * i;
 	}
-	
+
+	public double pFromRandI(double r, double i){
+		double val = i * i;
+		return r * val;
+	}
+
 	
 }
