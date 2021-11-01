@@ -68,4 +68,9 @@ public class Calculator {
 	public  double uFromRannI(double r,double i){
 		return r * i;
 	}
+
+	public  double uFromPannI(double p,double i){
+		return p / i;
+	}
+	
 }
