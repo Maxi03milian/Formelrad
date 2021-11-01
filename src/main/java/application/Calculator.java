@@ -51,6 +51,7 @@ public class Calculator {
 
 	//Methods for calculations
 
+	//Formulas with P
 	public double pFromUandI(double u, double i){
 		return u * i;
 	}
@@ -60,7 +61,7 @@ public class Calculator {
 		return r * val;
 	}
 
-	public double pFromUandR(double u, double r){
+	public double pFromUandR(double u, double r) {
 		double val = u * u;
 		return val / r;
 	}
@@ -76,6 +77,18 @@ public class Calculator {
 		return Math.sqrt(p / r);
 	}
 
+  
+	//Formulas with U
+	public  double uFromRannI(double r,double i){
+		return r * i;
+	}
 
-	
+	public  double uFromPannI(double p,double i){
+		return p / i;
+	}
+
+	public  double uFromPandR(double p,double r){
+		double val = p * r;
+		return  Math.sqrt(val);
+	}
 }
