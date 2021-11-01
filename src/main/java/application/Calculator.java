@@ -60,10 +60,21 @@ public class Calculator {
 		return r * val;
 	}
 
-	public double pFromUandR(double u, double r){
+	public double pFromUandR(double u, double r) {
 		double val = u * u;
 		return val / r;
 	}
 
-	
+	public  double uFromRannI(double r,double i){
+		return r * i;
+	}
+
+	public  double uFromPannI(double p,double i){
+		return p / i;
+	}
+
+	public  double uFromPandR(double p,double r){
+		double val = p * r;
+		return  Math.sqrt(val);
+	}
 }
