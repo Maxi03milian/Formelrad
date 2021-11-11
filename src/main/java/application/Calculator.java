@@ -44,7 +44,17 @@ public class Calculator {
 	}
 
 	public void calculate() {
-		if(getLeistung() > 0 && getSpannung() > 0){
+		double[] inputs = new double[]{getLeistung(), getStrom(), getSpannung(), getWiderstand()};
+		System.out.println("Calculating....");
+		int counter = 0;
+		for (int index = 0; index < inputs.length; index++){
+			if(inputs[index] > 0){
+				counter++;
+			}
+		}
+		if(counter > 2){
+			System.out.println("Unable to process user input");
+		}else if(getLeistung() > 0 && getSpannung() > 0){
 			iFromPandU(getLeistung(), getSpannung());
 			rFromPandU(getLeistung(), getSpannung());
 		}else if(getStrom() > 0 && getWiderstand() > 0){
