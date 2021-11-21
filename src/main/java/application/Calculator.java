@@ -2,122 +2,159 @@ package application;
 
 /**
  * Berechnet das Formelrad
+ *
  * @author Peter Rutschmann
  * @version 13.09.2018
  */
 public class Calculator {
-	private double leistung;
-	private double spannung;
-	private double strom;
-	private double widerstand;
-	
-	public Calculator(double leistung, double spannung, double strom, double widerstand) {
-		super();
-		this.leistung = leistung;
-		this.spannung = spannung;
-		this.strom = strom;
-		this.widerstand = widerstand;
-	}
-	
-	public double getLeistung() {
-		return leistung;
-	}
-	
-	public double getSpannung() {
-		return spannung;
-	}
+    private double leistung;
+    private double spannung;
+    private double strom;
+    private double widerstand;
 
-	public double getStrom() {
-		return strom;
-	}
+    public Calculator(double leistung, double spannung, double strom, double widerstand) {
+        super();
+        this.leistung = leistung;
+        this.spannung = spannung;
+        this.strom = strom;
+        this.widerstand = widerstand;
+    }
 
-	public double getWiderstand() {
-		return widerstand;
-	}
+    public double getLeistung() {
+        return leistung;
+    }
 
-	@Override
-	public String toString() {
-		return "Calculator [leistung=" + leistung + 
-				", spannung=" + spannung + 
-				", strom=" + strom + 
-				", widerstand="	+ widerstand + "]";
-	}
+    public double getSpannung() {
+        return spannung;
+    }
 
-	public void calculate() {
-		if(getLeistung() > 0 && getSpannung() > 0){
-			iFromPandU(getLeistung(), getSpannung());
-			rFromPandU(getLeistung(), getSpannung());
-		}else if(getStrom() > 0 && getWiderstand() > 0){
-			pFromRandI(getWiderstand(), getStrom());
-			uFromRannI(getWiderstand(), getStrom());
-		}else if(getLeistung() > 0 && getStrom() > 0){
-			uFromPannI(getLeistung(), getStrom());
-			rFromPandI(getLeistung(), getStrom());
-		}else if(getSpannung() > 0 && getWiderstand() > 0){
-			pFromUandR(getSpannung(), getWiderstand());
-			iFromUandR(getSpannung(), getWiderstand());
-		}else if(getLeistung() > 0 && getWiderstand() > 0){
-			uFromPandR(getLeistung(), getWiderstand());
-			iFromPandR(getLeistung(), getWiderstand());
-		}else if(getStrom() > 0 && getSpannung() > 0){
-			pFromUandI(getSpannung(), getStrom());
-			rFromUandI(getSpannung(), getStrom());
-		}
-	}
+    public double getStrom() {
+        return strom;
+    }
 
-	//Methods for calculations
+    public double getWiderstand() {
+        return widerstand;
+    }
 
-	//Formulas with P
-	public double pFromUandI(double u, double i){
-		return u * i;
-	}
+    public void setLeistung(double leistung) {
+        this.leistung = leistung;
+    }
 
-	public double pFromRandI(double r, double i){
-		double val = i * i;
-		return r * val;
-	}
+    public void setSpannung(double spannung) {
+        this.spannung = spannung;
+    }
 
-	public double pFromUandR(double u, double r) {
-		double val = u * u;
-		return val / r;
-	}
+    public void setStrom(double strom) {
+        this.strom = strom;
+    }
 
-	//Formulas with I
-	public double iFromPandU(double p, double u){
-		return p / u;
-	}
-	public double iFromUandR(double u, double r){
-		return u / r;
-	}
-	public double iFromPandR(double p, double r){
-		return Math.sqrt(p / r);
-	}
+    public void setWiderstand(double widerstand) {
+        this.widerstand = widerstand;
+    }
 
-  
-	//Formulas with U
-	public  double uFromRannI(double r,double i){
-		return r * i;
-	}
+    @Override
+    public String toString() {
+        return "Calculator [leistung=" + leistung +
+                ", spannung=" + spannung +
+                ", strom=" + strom +
+                ", widerstand=" + widerstand + "]";
+    }
 
-	public  double uFromPannI(double p,double i){
-		return p / i;
-	}
+    public void calculate() {
+        double[] inputs = new double[]{getLeistung(), getStrom(), getSpannung(), getWiderstand()};
+        System.out.println("Calculating....");
+        int counter = 0;
+        for (int index = 0; index < inputs.length; index++) {
+            if (inputs[index] > 0 && inputs[index] == 1) {
+                counter++;
+            }
+        }
+        if (counter > 2) {
+            System.out.println("Unable to process user input");
+        } else if (getLeistung() > 0 && getSpannung() > 0) {
+            setStrom(iFromPandU(getLeistung(), getSpannung()));
+            setWiderstand(rFromPandU(getLeistung(), getSpannung()));
+            System.out.println("Berechnet: Strom und Widerstand von Leistung und Spannung. ");
+        } else if (getStrom() > 0 && getWiderstand() > 0) {
+            setLeistung(pFromRandI(getWiderstand(), getStrom()));
+            setSpannung(uFromRannI(getWiderstand(), getStrom()));
+            System.out.println("Berechnet: Leistung und Spannung von Widerstand und Strom. ");
+        } else if (getLeistung() > 0 && getStrom() > 0) {
+            setSpannung(uFromPannI(getLeistung(), getStrom()));
+            setWiderstand(rFromPandI(getLeistung(), getStrom()));
+            System.out.println("Berechnet: Spannung und Widerstand von Leistung und Strom. ");
+        } else if (getSpannung() > 0 && getWiderstand() > 0) {
+            setLeistung(pFromUandR(getSpannung(), getWiderstand()));
+            setStrom(iFromUandR(getSpannung(), getWiderstand()));
+            System.out.println("Berechnet: Leistung und Strom von Spannung und Widerstand. ");
+        } else if (getLeistung() > 0 && getWiderstand() > 0) {
+            setSpannung(uFromPandR(getLeistung(), getWiderstand()));
+            setStrom(iFromPandR(getLeistung(), getWiderstand()));
+            System.out.println("Berechnet: Spannung und Strom von Leistung und Widerstand. ");
+        } else if (getStrom() > 0 && getSpannung() > 0) {
+            setLeistung(pFromUandI(getSpannung(), getStrom()));
+            setWiderstand(rFromUandI(getSpannung(), getStrom()));
+            System.out.println("Berechnet: Leistung und Widerstand von Spannung und Strom. ");
+        }
+    }
 
-	public  double uFromPandR(double p,double r){
-		double val = p * r;
-		return  Math.sqrt(val);
-	}
+    //Methods for calculations
 
-	//Formulas with R
-	public  double rFromUandI(double u,double i){
-		return u / i;
-	}
-	public  double rFromPandI(double p,double i){
-		double val = i * i;
-		return p / val;
-	}
-	public  double rFromPandU(double p,double u){
-		double val = u * u;
-		return val / p;
-	}
+    //Formulas with P
+    public double pFromUandI(double u, double i) {
+        return u * i;
+    }
+
+    public double pFromRandI(double r, double i) {
+        double val = i * i;
+        return r * val;
+    }
+
+    public double pFromUandR(double u, double r) {
+        double val = u * u;
+        return val / r;
+    }
+
+    //Formulas with I
+    public double iFromPandU(double p, double u) {
+        return p / u;
+    }
+
+    public double iFromUandR(double u, double r) {
+        return u / r;
+    }
+
+    public double iFromPandR(double p, double r) {
+        return Math.sqrt(p / r);
+    }
+
+
+    //Formulas with U
+    public double uFromRannI(double r, double i) {
+        return r * i;
+    }
+
+    public double uFromPannI(double p, double i) {
+        return p / i;
+    }
+
+    public double uFromPandR(double p, double r) {
+        double val = p * r;
+        return Math.sqrt(val);
+    }
+
+    //Formulas with R
+    public double rFromUandI(double u, double i) {
+        return u / i;
+    }
+
+    public double rFromPandI(double p, double i) {
+        double val = i * i;
+        return p / val;
+    }
+
+    public double rFromPandU(double p, double u) {
+        double val = u * u;
+        return val / p;
+    }
 }
