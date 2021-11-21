@@ -78,6 +78,7 @@ public class Main extends Application {
 			root.getChildren().add(btnBerechnen);
 			
 			btnBerechnen.setOnAction(e -> {
+
 				double power = 0.0;
 				double tension = 0.0;
 				double current = 0.0;
@@ -96,11 +97,13 @@ public class Main extends Application {
 				}
 				Calculator myCalculator = new Calculator(
 						power, tension, current, resistence);
+				myCalculator.calculate();
 					
 				txLeistung.setText(Double.toString(myCalculator.getLeistung()));
 				txSpannung.setText(Double.toString(myCalculator.getSpannung()));
 				txStrom.setText(Double.toString(myCalculator.getStrom()));
 				txWiderstand.setText(Double.toString(myCalculator.getWiderstand()));
+
 			});
 
 			Scene scene = new Scene(root, 330, 490);
