@@ -101,6 +101,8 @@ public class Main extends Application {
 				txSpannung.setText(Double.toString(myCalculator.getSpannung()));
 				txStrom.setText(Double.toString(myCalculator.getStrom()));
 				txWiderstand.setText(Double.toString(myCalculator.getWiderstand()));
+
+				myCalculator.calculate();
 			});
 
 			Scene scene = new Scene(root, 330, 490);

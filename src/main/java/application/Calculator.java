@@ -48,7 +48,7 @@ public class Calculator {
 		System.out.println("Calculating....");
 		int counter = 0;
 		for (int index = 0; index < inputs.length; index++){
-			if(inputs[index] > 0){
+			if(inputs[index] > 0 && inputs[index] == 1){
 				counter++;
 			}
 		}
