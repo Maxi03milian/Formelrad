@@ -74,21 +74,27 @@ public class Calculator {
         } else if (getLeistung() > 0 && getSpannung() > 0) {
             setStrom(iFromPandU(getLeistung(), getSpannung()));
             setWiderstand(rFromPandU(getLeistung(), getSpannung()));
+            System.out.println("Berechnet: Strom und Widerstand von Leistung und Spannung. ");
         } else if (getStrom() > 0 && getWiderstand() > 0) {
             setLeistung(pFromRandI(getWiderstand(), getStrom()));
             setSpannung(uFromRannI(getWiderstand(), getStrom()));
+            System.out.println("Berechnet: Leistung und Spannung von Widerstand und Strom. ");
         } else if (getLeistung() > 0 && getStrom() > 0) {
             setSpannung(uFromPannI(getLeistung(), getStrom()));
             setWiderstand(rFromPandI(getLeistung(), getStrom()));
+            System.out.println("Berechnet: Spannung und Widerstand von Leistung und Strom. ");
         } else if (getSpannung() > 0 && getWiderstand() > 0) {
             setLeistung(pFromUandR(getSpannung(), getWiderstand()));
             setStrom(iFromUandR(getSpannung(), getWiderstand()));
+            System.out.println("Berechnet: Leistung und Strom von Spannung und Widerstand. ");
         } else if (getLeistung() > 0 && getWiderstand() > 0) {
             setSpannung(uFromPandR(getLeistung(), getWiderstand()));
             setStrom(iFromPandR(getLeistung(), getWiderstand()));
+            System.out.println("Berechnet: Spannung und Strom von Leistung und Widerstand. ");
         } else if (getStrom() > 0 && getSpannung() > 0) {
             setLeistung(pFromUandI(getSpannung(), getStrom()));
             setWiderstand(rFromUandI(getSpannung(), getStrom()));
+            System.out.println("Berechnet: Leistung und Widerstand von Spannung und Strom. ");
         }
     }
 
